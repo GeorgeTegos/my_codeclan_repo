@@ -20,7 +20,7 @@ class Traveller {
   }
 
   calculateTotalDistanceTravelled() {
-
+    return this.journeys.map(({distance})=>distance).reduce((total,distance)=> total+distance)
   }
 
   getUniqueModesOfTransport() {
