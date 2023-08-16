@@ -16,7 +16,7 @@ class Traveller {
   }
 
   getJourneysByMinDistance(minDistance) {
-    return this.journeys.filter((journey)=> journey.distance > minDistance)
+    return this.journeys.filter(({distance})=> distance > minDistance)
   }
 
   calculateTotalDistanceTravelled() {
@@ -24,7 +24,8 @@ class Traveller {
   }
 
   getUniqueModesOfTransport() {
-
+    const array = this.journeys.map(({transport})=>transport)
+    return [...new Set(array)]
   }
 }
 
