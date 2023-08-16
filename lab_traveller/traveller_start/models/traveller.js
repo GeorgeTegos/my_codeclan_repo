@@ -16,7 +16,7 @@ class Traveller {
   }
 
   getJourneysByMinDistance(minDistance) {
-
+    return this.journeys.filter((journey)=> journey.distance > minDistance)
   }
 
   calculateTotalDistanceTravelled() {
