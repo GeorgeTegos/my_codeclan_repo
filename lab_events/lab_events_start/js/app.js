@@ -25,33 +25,27 @@ const handleFormSubmit = function(event){
   console.log(event)
 
   const addItemToPage = document.getElementById("reading-list")
+  const newItem = document.createElement('li')
+  newItem.classList.add("listed-item")
 
-  const newTitleItem = document.createElement("li")
   const newTitle = document.createElement("h3")
-  newTitle.classList.add('listed-item')
+  newTitle.classList.add('item-title')
   newTitle.textContent = event.target[0].value
-  newTitleItem.appendChild(newTitle)
 
-  const newAuthorItem = document.createElement('li')
-  const newAuthor = document.createElement('h5')
-  newAuthor.classList.add("listed-item")
+  const newAuthor = document.createElement('h4')
+  newAuthor.classList.add("item-author")
   newAuthor.textContent = event.target[1].value
-  newAuthorItem.appendChild(newAuthor)
 
 
-  const newCategoryItem = document.createElement('li')
-  const newCategory = document.createElement('h6')
-  newCategory.classList.add("listed-item")
+  const newCategory = document.createElement('h5')
+  newCategory.classList.add("item-category")
   newCategory.textContent=event.target[2].value
-  newCategoryItem.appendChild(newCategory)
 
 
 
+  newItem.append(newTitle,newAuthor,newCategory)
+  addItemToPage.appendChild(newItem)
 
-
-  addItemToPage.appendChild(newTitleItem)
-  addItemToPage.appendChild(newAuthorItem)
-  addItemToPage.appendChild(newCategoryItem)
 
 
   event.preventDefault();

@@ -15,6 +15,10 @@ body {
   gap: 1rem;
 }
 
+.primary{
+  font-weight: bold;
+}
+
 #form-wrapper {
   display: flex;
   gap:1rem;
@@ -36,4 +40,21 @@ body {
 
 /* Readin list items */
 
+#reading-list {
+  list-style: none;
+  display: flex;
+  gap:1.5rem;
+}
 
+.listed-item{
+  padding: 10px 10px 0px 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: lightblue;
+  border-radius: 10%;
+  border:1px solid rgb(86, 179, 237);
+}
+
+.item-title {
+  font-size: x-large ;
+}
