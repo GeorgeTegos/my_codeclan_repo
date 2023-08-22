@@ -29,9 +29,8 @@ return(
             <input onChange={(e) => setName(e.target.value)} value={name}/>
         </div>
         <div>
-            <label> Priority</label>
+            <label> Priority:</label>
             <TaskRadio priority={priority} handleChange={handleChange} />
-            {/* <input onChange={(e) => setPriority(e.target.value)} value={priority}/> */}
         </div>
         <button onClick={createTask}>Add Task</button>
     </>

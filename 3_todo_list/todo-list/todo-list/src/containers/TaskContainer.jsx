@@ -6,9 +6,9 @@ function TaskContainer(){
 
     const [tasks,setTasks] = useState ([
         {
-        id: 1,
-        name: "Do this program",
-        priority: "high"
+            id: 1,
+            name: "Do this program",
+            priority: "high"
         },
         {
             id: 2,
@@ -19,7 +19,7 @@ function TaskContainer(){
 
     return(
         <>
-        <h1>Hello</h1>
+        <h1>Tasks</h1>
         <TaskForm tasks={tasks} setTasks={setTasks} />
         <TaskList tasks={tasks}/>
         
