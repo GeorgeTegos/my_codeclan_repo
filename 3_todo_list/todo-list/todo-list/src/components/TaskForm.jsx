@@ -1,8 +1,13 @@
 import { useState } from "react";
+import TaskRadio from "./TaskRadio";
 
 function TaskForm({tasks, setTasks}){
   const [name, setName] = useState("");
   const [priority, setPriority] = useState("");
+
+  function handleChange(event){
+    setPriority(event.target.value)
+  }
 
   const createTask = () => {
     const newTask = {
@@ -25,7 +30,8 @@ return(
         </div>
         <div>
             <label> Priority</label>
-            <input onChange={(e) => setPriority(e.target.value)} value={priority}/>
+            <TaskRadio priority={priority} handleChange={handleChange} />
+            {/* <input onChange={(e) => setPriority(e.target.value)} value={priority}/> */}
         </div>
         <button onClick={createTask}>Add Task</button>
     </>
