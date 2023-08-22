@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Question from "../components/Question";
 import WrongAnswers from "../components/wrongAnswers";
+import CorrectAnswers from "../components/CorrectAnswers";
 
 function Quiz(){
     const [questions, setQuestions] = useState([
@@ -41,30 +42,28 @@ function Quiz(){
         <>
           <h4>score: {score}</h4>
 
-          {questions.length != currentQuestionIndex ? <>
-            <h4>{currentQuestionIndex+1}/{questions.length}</h4>
+          {questions.length != currentQuestionIndex 
+          ? 
+          <>
             <Question 
               questions={questions} 
               handleAnswerSelect={handleAnswerSelect} 
               currentQuestionIndex={currentQuestionIndex}
-              />
-        </>: 
-            <>
-          <p>You got this questions right</p>
-          <ul>
-            {correctList.map((question, index)=> <li key={index}>For Question: {question.question} <br />
-            The correct answer is: {question.answer}</li>)}
-         </ul>
-            <br /> <br />
-          <p>For your wrong questions the correct answers are:</p>
-            
+            />
+          </>
+          : 
+          <>
+              <h3>You got this questions right</h3>
+              <CorrectAnswers correctList={correctList}/>
+              <br />
+              <h3>For your wrong questions the correct answers are:</h3>
+              
               <WrongAnswers wrongList={wrongList}/>
+              <button className="reset-quiz-button" onClick={() => window.location.reload(false)} >Do Quiz Again</button>
 
-              <button onClick={() => window.location.reload(false)} >Do Quiz Again</button>
 
-
-            </>
-        }
+          </>
+          }
         </>
     )
 }

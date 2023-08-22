@@ -2,9 +2,9 @@ function WrongAnswers({wrongList}){
 
     return (
         <>
-        <ul>
-            {wrongList.map((question, index)=> <li key={index}>For Question: {question.question} <br />
-            The correct answer is: {question.answer}</li>)}
+        <ul className="end-answers-list">
+            {wrongList.map((question, index)=> <li className="end-answers" key={index}>{question.question} <br />
+            <p>The correct answer is:</p> <div className="end-answers-answer wrong">{question.answer}</div></li>)}
         </ul>
         </>
         
