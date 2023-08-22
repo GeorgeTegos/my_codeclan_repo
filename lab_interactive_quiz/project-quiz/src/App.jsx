@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import './App.css'
-import QuizContainer from './container/Quiz'
+import Quiz from './container/Quiz'
 
 function App() {
 
   return (
     <>
-      <QuizContainer />
+      <Quiz />
     </>
   )
 }

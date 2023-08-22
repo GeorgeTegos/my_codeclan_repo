@@ -1,10 +1,20 @@
+import { useState } from "react"
+import Options from "./Options"
 
-
-function Question({question, options, handleAnswerSelect}){
+function Question({questions, handleAnswerSelect, currentQuestionIndex}){
 
 
     return(
-        <h4>asd</h4>
+        <>
+        
+          <h4>{questions[currentQuestionIndex].question}</h4>
+          <h3>Options:</h3><br />
+            <Options 
+                questions={questions} 
+                handleAnswerSelect={handleAnswerSelect} 
+                currentQuestionIndex={currentQuestionIndex}
+                />
+        </>
     )
 }
 
