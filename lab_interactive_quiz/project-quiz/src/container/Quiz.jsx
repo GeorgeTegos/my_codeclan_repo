@@ -29,8 +29,8 @@ function Quiz(){
 
         const handleAnswerSelect = (selectedAnswer) =>{
           questions[currentQuestionIndex].answer == selectedAnswer 
-          ? (setScore(score+1),  [...correctList, correctList.push(questions[currentQuestionIndex])])
-          : [...wrongList, wrongList.push(questions[currentQuestionIndex])]
+          ? (setScore(score+1),  setCorrectList([...correctList, questions[currentQuestionIndex]]))
+          : setWrongList( [...wrongList, questions[currentQuestionIndex]])
 
           setCurrentQuestionIndex(currentQuestionIndex+1)
           
