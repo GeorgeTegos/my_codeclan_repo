@@ -59,7 +59,9 @@ function Quiz(){
           <p>For your wrong questions the correct answers are:</p>
             
               <WrongAnswers wrongList={wrongList}/>
-            
+
+              <button onClick={() => window.location.reload(false)} >Do Quiz Again</button>
+
 
             </>
         }
