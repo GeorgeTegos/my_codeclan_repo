@@ -36,8 +36,6 @@ function Quiz(){
           setCurrentQuestionIndex(currentQuestionIndex+1)
           
         }
-        
-
     return(
         <>
           <h4>score: {score}</h4>
@@ -56,9 +54,9 @@ function Quiz(){
               <CorrectAnswers correctList={correctList}/>
               <br />
               <WrongAnswers wrongList={wrongList}/>
-              <button className="reset-quiz-button" onClick={() => window.location.reload(false)} >Do Quiz Again</button>
-
-
+              <button className="reset-quiz-button" 
+                onClick={() => window.location.reload(false)} >Do Quiz Again
+              </button>
           </>
           }
         </>
