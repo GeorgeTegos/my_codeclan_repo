@@ -30,7 +30,7 @@ function Quiz(){
 
         const handleAnswerSelect = (selectedAnswer) =>{
           questions[currentQuestionIndex].answer == selectedAnswer 
-          ? (setScore(score+1),  setCorrectList([...correctList, questions[currentQuestionIndex]]))
+          ? (setScore(score+1), setCorrectList([...correctList, questions[currentQuestionIndex]]))
           : setWrongList( [...wrongList, questions[currentQuestionIndex]])
 
           setCurrentQuestionIndex(currentQuestionIndex+1)
@@ -53,11 +53,8 @@ function Quiz(){
           </>
           : 
           <>
-              <h3>You got this questions right</h3>
               <CorrectAnswers correctList={correctList}/>
               <br />
-              <h3>For your wrong questions the correct answers are:</h3>
-              
               <WrongAnswers wrongList={wrongList}/>
               <button className="reset-quiz-button" onClick={() => window.location.reload(false)} >Do Quiz Again</button>
 

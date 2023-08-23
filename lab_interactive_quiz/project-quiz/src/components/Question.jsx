@@ -1,4 +1,3 @@
-import { useState } from "react"
 import Options from "./Options"
 
 function Question({questions, handleAnswerSelect, currentQuestionIndex}){
