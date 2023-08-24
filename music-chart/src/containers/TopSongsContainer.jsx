@@ -4,8 +4,9 @@ function TopSongsContainer() {
     const [data, setData] = useState([]);
     const [songsList, setSongsList] = useState([]);
     const [moreSongsInfo, setMoreSongsInfo] = useState([]);
-    const [genreSelect, setGenreSelect] = useState("");
+    const [genreSelect, setGenreSelect] = useState("All");
     const [genresOptions,setGenresOptions] = useState("")
+    const [toggle, setToggle] = useState("songs")
     const [genres, setGenres] = useState([
         {name: "All", url: "https://itunes.apple.com/gb/rss/topsongs/limit=20/json"},
         {name: "Rock", url: "https://itunes.apple.com/gb/rss/topsongs/limit=20/genre=21/json"},
@@ -14,18 +15,18 @@ function TopSongsContainer() {
     ]);
 
     
-    useEffect(() => {
-        fetch("https://itunes.apple.com/gb/rss/topsongs/limit=20/json")
-        .then((res) => res.json())
-        .then((data) => {
-            const array = data.feed.entry
-            setData(array)
-            setGenresOptions(genres.map((item,index) => <option key={index}>{item.name}</option>))
-        })
-    }, []);
+    // useEffect(() => {
+    //     fetch("https://itunes.apple.com/gb/rss/topsongs/limit=20/json")
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //         const array = data.feed.entry
+    //         setData(array)
+    //         setGenresOptions(genres.map((item,index) => <option key={index}>{item.name}</option>))
+    //     })
+    // }, []);
 
-    useEffect(() => async () => {
-        
+    useEffect(() => {
+
         console.log(genreSelect)
         let promise
         {genreSelect == "All"? promise = fetch("https://itunes.apple.com/gb/rss/topsongs/limit=20/json"):
@@ -38,11 +39,12 @@ function TopSongsContainer() {
         .then((data)=>{
             const array = data.feed.entry
             setData(array)
+            // setGenresOptions(genres.map((item,index) => <option key={index}>{item.name}</option>))
         })
-
     }, [genreSelect]);
 
     const showSongs = () => {
+        setToggle("songs")
         setMoreSongsInfo([]);
         setSongsList(data.map((song, index) => (
             <li key={index} className="song-list-item">{song.title.label}</li>
@@ -50,6 +52,7 @@ function TopSongsContainer() {
     };
 
     const showMoreSongsInfo = () => {
+        setToggle("infos")
         setSongsList([]);
         setMoreSongsInfo(data.map((song, index) => {
             const { "im:name": name, "im:artist": artist, category, "im:image": image } = song;
@@ -64,9 +67,6 @@ function TopSongsContainer() {
         }));
     };  
 
-    
-
-
 
     return (
         <>   
@@ -74,14 +74,31 @@ function TopSongsContainer() {
             <button onClick={showMoreSongsInfo}> More Infos </button>
 
             <label htmlFor="genre">Change Genre
-            <select onChange={(e)=> setGenreSelect(e.target.value)}>
-               {genresOptions}
+            <select onChange={(e)=> {
+            setGenreSelect(e.target.value)}
+            } >
+               {genres.map((item,index) => <option key={index}>{item.name}</option>)}
             </select>
             </label> 
 
             <ol>
-                {songsList}
-                {moreSongsInfo}
+                {toggle == "songs" 
+                    ? data.map((song, index) => (
+                        <li key={index} className="song-list-item">{song.title.label}</li>
+                    ))
+                    : data.map((song, index) => {
+                        const { "im:name": name, "im:artist": artist, category, "im:image": image } = song;
+                        return (
+                            <li key={index} className="more-info-list-item">
+                                Song: {name.label} <br />
+                                Artist: {artist.label} <br />
+                                Category: {category.attributes.term} <br />
+                                <img src={image[0].label} alt="" />
+                            </li>
+                        );
+                })}
+                {/* {songsList}
+                {moreSongsInfo} */}
             </ol>
 
 
