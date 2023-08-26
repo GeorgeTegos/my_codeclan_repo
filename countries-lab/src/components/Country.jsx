@@ -1,14 +1,17 @@
 import React from 'react'
+import FavoriteCountriesButton from './FavoriteCountriesButton'
+
 
 function Country({country, favoriteCountries, setFavoriteCountries, handleFavoriteSearch }) {
-    console.log(country)
-    console.log(favoriteCountries)
-    console.log(country)
-  return (
+
+
+    return (
     <>
-    {handleFavoriteSearch(country) != true 
-    ? <button onClick={()=>setFavoriteCountries([...favoriteCountries,country])}> Fav</button>
-    : <h4>Liked !</h4>}
+      <FavoriteCountriesButton 
+        favoriteCountries={favoriteCountries} 
+        country={country} 
+        setFavoriteCountries={setFavoriteCountries}
+        handleFavoriteSearch={handleFavoriteSearch}/>
 
     <div className='country-wrapper'>
     <img src={country.flags.png} alt="s" />

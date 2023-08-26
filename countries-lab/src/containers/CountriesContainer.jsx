@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import TotalPopulation from '../components/TotalPopulation'
 import CountriesList from '../components/CountriesList'
+import Header from '../components/Header'
+import FavoriteCountriesList from '../components/FavoriteCountriesList'
+import FilterArea from '../components/FilterArea'
 
 const CountriesContainer = () => {
     const [countries,setCountries] = useState([])
+    const [favoriteCountries,setFavoriteCountries] = useState([])
     const [country,setCountry] = useState(null)
 
 
@@ -16,9 +19,25 @@ const CountriesContainer = () => {
 
   return (
         <>
-        {country == null &&  <TotalPopulation countries={countries}/>}
-        <br />
-        <CountriesList country={country} setCountry={setCountry} countries={countries}/>    
+        {/* HEADER */}
+        <Header country={country} countries={countries}/> 
+    
+        {/* Filters Area */}
+        <div className='main-wrapper'>
+            <div className='left-side-box'>
+                <FilterArea />
+                {/* Favorite Countries Section */}
+                <FavoriteCountriesList favoriteCountries={favoriteCountries}/>
+            </div>
+            {/* output section */}
+            <CountriesList 
+                country={country} 
+                setCountry={setCountry} 
+                countries={countries}
+                favoriteCountries={favoriteCountries}
+                setFavoriteCountries={setFavoriteCountries}
+                />    
+        </div>
         </>
     )
 }
