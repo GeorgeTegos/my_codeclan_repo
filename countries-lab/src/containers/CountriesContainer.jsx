@@ -20,8 +20,9 @@ const CountriesContainer = () => {
   return (
         <>
         {/* HEADER */}
-        <Header country={country} countries={countries}/> 
-    
+        <div className='header'>
+        <Header country={country} countries={countries} /> 
+        </div>
         {/* Filters Area */}
         <div className='main-wrapper'>
             <div className='left-side-box'>

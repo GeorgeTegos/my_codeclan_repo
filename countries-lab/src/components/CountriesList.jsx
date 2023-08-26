@@ -20,15 +20,17 @@ function CountriesList({countries , country, setCountry,favoriteCountries, setFa
     : countries.map((country, index)=>{
         return (
         <>
-        <li key={index} className='countries-list-item'> {country.name.common} 
-    <FavoriteCountriesButton 
-        favoriteCountries={favoriteCountries} 
-        country={country} 
-        setFavoriteCountries={setFavoriteCountries}
-        handleFavoriteSearch={handleFavoriteSearch}
-        />
-        <button onClick={()=>setCountry(index)}>More info</button>
-        </li> 
+        <ul className='countries-list'>
+            <li key={index} className='countries-list-item'> {country.name.common} 
+        <FavoriteCountriesButton 
+            favoriteCountries={favoriteCountries} 
+            country={country} 
+            setFavoriteCountries={setFavoriteCountries}
+            handleFavoriteSearch={handleFavoriteSearch}
+            />
+            <button onClick={()=>setCountry(index)}>More info</button>
+            </li> 
+        </ul>
         </>
     )})}
     </div>
