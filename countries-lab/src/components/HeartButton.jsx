@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import Heart from "react-heart"
-import Country from "./Country";
 
 function HeartButton({active,setActive,setFavoriteCountries,country,favoriteCountries}) {
   return (

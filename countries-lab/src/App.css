@@ -9,13 +9,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid green;
   width: 80%;
   justify-content: center;
 }
 
 .header{
   background-color: grey;
+  display: flex;
+  color: white;
+  font-size: larger;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 5rem;
   
@@ -24,7 +28,6 @@
             /* Main Wrapper Area */
 .main-wrapper {
   display: flex;
-  border: 1px solid black;
   width: 100%;
 }
 
@@ -32,7 +35,6 @@
             /* Left Side Box Area */
 
 .left-side-box{
-  border: 1px solid red;
   min-width: 30%;
   max-width: 30%;
 }
@@ -40,8 +42,10 @@
 
                   /* Filter Area */
 .filter-area-wrapper{
-  background-color: yellow;
-  min-height: 15rem;
+  background-color: rgb(189, 183, 183);
+  border-bottom-left-radius:15% ;
+  border-bottom-right-radius: 15%;
+  min-height: 4rem;
 }
 
 
@@ -60,16 +64,35 @@
             /* Countries List Area */
 .countries-list-item{
   list-style-type: none;
+  max-width: max-content;
+  border-radius: 30%;
+  display: flex;
+  align-items: center;
+  gap: 2px;
 }
+
+.flag-button{
+  max-width: 3.2rem;
+  max-height: 3rem;
+  border-radius: 20%;
+}
+
+.flag-button:hover{
+  cursor:pointer;
+}
+
 
 .countries-list-wrapper {
-  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-flow: wrap;
+  gap: 1rem;
+  justify-content: center;
+
+
 }
 
-.countries-list{
-  background-color: red;
-  /* TO DO */
-}
+
 
 
 

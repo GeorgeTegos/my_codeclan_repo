@@ -3,10 +3,10 @@ import Country from './Country'
 import FavoriteCountriesButton from './FavoriteCountriesButton'
 
 function CountriesList({countries , country, setCountry,favoriteCountries, setFavoriteCountries}) {
+    
     const handleFavoriteSearch = (country) =>{
-        return favoriteCountries.some(item => item === country)
+        return favoriteCountries.includes(country)
     }
-
   return (
     <div className='countries-list-wrapper'>
     {country != null
@@ -20,19 +20,25 @@ function CountriesList({countries , country, setCountry,favoriteCountries, setFa
     : countries.map((country, index)=>{
         return (
         <>
-        <ul className='countries-list'>
-            <li key={index} className='countries-list-item'> {country.name.common} 
-        <FavoriteCountriesButton 
-            favoriteCountries={favoriteCountries} 
-            country={country} 
-            setFavoriteCountries={setFavoriteCountries}
-            handleFavoriteSearch={handleFavoriteSearch}
-            />
-            <button onClick={()=>setCountry(index)}>More info</button>
+            <li key={index} className='countries-list-item'> 
+                <img className="flag-button" 
+                    src={country.flags.png} 
+                    alt={country.name.common} 
+                    onClick={()=>setCountry(index)}/> 
+                <div className='add-to-favorite-countries'>
+                    <FavoriteCountriesButton 
+                        favoriteCountries={favoriteCountries} 
+                        country={country} 
+                        setFavoriteCountries={setFavoriteCountries}
+                        handleFavoriteSearch={handleFavoriteSearch}
+                    />
+                </div>
             </li> 
-        </ul>
+
         </>
-    )})}
+    )})
+    
+    }
     </div>
   )
 }

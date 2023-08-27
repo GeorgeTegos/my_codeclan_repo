@@ -4,9 +4,10 @@ import HeartButton from "./HeartButton"
 
 function FavoriteCountriesButton({favoriteCountries, country, setFavoriteCountries, handleFavoriteSearch}) {
   const [active, setActive] = useState(false)
+
   return (
     <>
-        { handleFavoriteSearch(country) != true
+        { handleFavoriteSearch(country) == true
         ?
           <HeartButton 
             active={active} 

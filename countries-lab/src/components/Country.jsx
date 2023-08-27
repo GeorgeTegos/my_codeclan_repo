@@ -1,17 +1,32 @@
 import React from 'react'
-import FavoriteCountriesButton from './FavoriteCountriesButton'
-
+import Heart from 'react-heart'
+import { useState } from 'react'
 
 function Country({country, favoriteCountries, setFavoriteCountries, handleFavoriteSearch }) {
-
+  const [active, setActive] = useState(false)
 
     return (
     <>
-      <FavoriteCountriesButton 
-        favoriteCountries={favoriteCountries} 
-        country={country} 
-        setFavoriteCountries={setFavoriteCountries}
-        handleFavoriteSearch={handleFavoriteSearch}/>
+    {favoriteCountries.includes(country) == true
+    ? 
+    <Heart isActive={!active} onClick={() =>{ 
+      setFavoriteCountries([...favoriteCountries.filter((countryToRemove)=> countryToRemove !== country)])
+      setActive(active)}}
+      animationTrigger = "both" 
+      inactiveColor = "rgba(255,125,125,.75)" 
+      activeColor = "#e019ae" 
+      animationDuration = {0.1}
+      style={{width:"1rem"}}/>   
+    :
+    <Heart isActive={active} onClick={() =>{ 
+      setFavoriteCountries([...favoriteCountries,country])
+      setActive(active)}}
+      animationTrigger = "both" 
+      inactiveColor = "rgba(255,125,125,.75)" 
+      activeColor = "#e019ae" 
+      animationDuration = {0.1}
+      style={{width:"1rem"}}/> 
+    }
 
     <div className='country-wrapper'>
     <img src={country.flags.png} alt="s" />
@@ -25,6 +40,12 @@ function Country({country, favoriteCountries, setFavoriteCountries, handleFavori
     
     <h4>Population</h4>
     {country.population}
+
+    <h5>Neighbor Countries</h5>
+    <ul>
+      {console.log(country.borders)}
+      {console.log(country.altSpellings[0])}
+    </ul>
 
     </div>
     </>

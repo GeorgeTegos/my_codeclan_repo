@@ -8,12 +8,14 @@ const CountriesContainer = () => {
     const [countries,setCountries] = useState([])
     const [favoriteCountries,setFavoriteCountries] = useState([])
     const [country,setCountry] = useState(null)
+    const [filteredData,setFilteredData] = useState([])
 
 
     useEffect(()=>{
         fetch("https://restcountries.com/v3.1/all")
         .then((res) => res.json())
         .then((data)=> setCountries(data))
+        .then(() =>setFilteredData(countries))
     },[])
     
 
@@ -26,7 +28,7 @@ const CountriesContainer = () => {
         {/* Filters Area */}
         <div className='main-wrapper'>
             <div className='left-side-box'>
-                <FilterArea />
+                <FilterArea countries={countries} filteredData={filteredData} setFilteredData={setFilteredData}/>
                 {/* Favorite Countries Section */}
                 <FavoriteCountriesList favoriteCountries={favoriteCountries}/>
             </div>
@@ -34,7 +36,8 @@ const CountriesContainer = () => {
             <CountriesList 
                 country={country} 
                 setCountry={setCountry} 
-                countries={countries}
+                countries={filteredData}
+                // countries={countries}
                 favoriteCountries={favoriteCountries}
                 setFavoriteCountries={setFavoriteCountries}
                 />    
