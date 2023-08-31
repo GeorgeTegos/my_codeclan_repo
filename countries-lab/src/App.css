@@ -13,6 +13,11 @@
   justify-content: center;
 }
 
+body{
+  background-image:url("/src/world_map.jpeg");
+
+}
+
 .header{
   background-color: grey;
   display: flex;
@@ -94,5 +99,24 @@
 
 
 
+/* Country wrapper */
 
+.country-wrapper{
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  margin-left:8rem;
+}
 
+.heart-flag{
+  display: flex;
+  flex-direction: row-reverse;
+  gap:3rem;
+}
+.heart{
+  align-self: center;
+}
+
+.heart:hover{
+  font-size: large;
+}

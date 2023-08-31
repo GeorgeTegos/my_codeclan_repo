@@ -13,7 +13,7 @@ function HeartButton({active,setActive,setFavoriteCountries,country,favoriteCoun
       inactiveColor = "rgba(255,125,125,.75)" 
       activeColor = "#e019ae" 
       animationDuration = {0.1}
-      style={{width:"1rem"}}/>   
+      style={{width:"2rem"}}/>   
     : 
     <Heart isActive={active} onClick={() =>{ 
       setFavoriteCountries([...favoriteCountries.filter((countryToRemove)=> countryToRemove !== country)])
@@ -22,7 +22,7 @@ function HeartButton({active,setActive,setFavoriteCountries,country,favoriteCoun
       inactiveColor = "rgba(255,125,125,.75)" 
       activeColor = "#e019ae" 
       animationDuration = {0.1}
-      style={{width:"1rem"}}/> 
+      style={{width:"2rem"}}/> 
     }   
   
   </>

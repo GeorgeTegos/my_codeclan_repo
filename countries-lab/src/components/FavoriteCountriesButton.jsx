@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import Heart from "react-heart"
 import HeartButton from "./HeartButton"
 
 function FavoriteCountriesButton({favoriteCountries, country, setFavoriteCountries, handleFavoriteSearch}) {

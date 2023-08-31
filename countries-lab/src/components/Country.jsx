@@ -7,6 +7,9 @@ function Country({country, favoriteCountries, setFavoriteCountries, handleFavori
 
     return (
     <>
+    <div className='country-wrapper'>
+      <div className='heart-flag'>
+        <div className='heart'>
     {favoriteCountries.includes(country) == true
     ? 
     <Heart isActive={!active} onClick={() =>{ 
@@ -16,7 +19,7 @@ function Country({country, favoriteCountries, setFavoriteCountries, handleFavori
       inactiveColor = "rgba(255,125,125,.75)" 
       activeColor = "#e019ae" 
       animationDuration = {0.1}
-      style={{width:"1rem"}}/>   
+      style={{width:"2rem"}}/>   
     :
     <Heart isActive={active} onClick={() =>{ 
       setFavoriteCountries([...favoriteCountries,country])
@@ -25,28 +28,35 @@ function Country({country, favoriteCountries, setFavoriteCountries, handleFavori
       inactiveColor = "rgba(255,125,125,.75)" 
       activeColor = "#e019ae" 
       animationDuration = {0.1}
-      style={{width:"1rem"}}/> 
+      style={{width:"2rem"}}/> 
     }
+      </div>
 
-    <div className='country-wrapper'>
-    <img src={country.flags.png} alt="s" />
-
-    <h3>Country:</h3> 
-    <span className='country-text'>{country.name.common} 
-    </span> 
-    <h4>Capital:</h4>
-    <span className='capital-text'> {country.capital[0]}</span>
-    <h4></h4>
     
-    <h4>Population</h4>
-    {country.population}
+    <img src={country.flags.png} alt={country.name.common} className='country-flag'/>
+    </div>
+    <span className='country-name-wrapper'>
+      <h3>Country:</h3> 
+      <span className='country-text'>{country.name.common} </span>
+    </span>
+    
+    <span className='country-capital-wrapper'>
+      <h4>Capital:</h4>
+      <span className='capital-text'> {country.capital[0]}</span>
+    </span>
+    
+    <span className='country-population-wrapper'>
+      <h4>Population</h4>
+      {country.population}
+    </span>
 
-    <h5>Neighbor Countries</h5>
-    <ul>
-      {console.log(country.borders)}
-      {console.log(country.altSpellings[0])}
-    </ul>
-
+    <span className='country-neighbors-wrapper'>
+      <h5>Neighbor Countries</h5>
+      <ul>
+        {console.log(country.borders)}
+        {console.log(country.altSpellings[0])}
+      </ul>
+    </span>
     </div>
     </>
   )
