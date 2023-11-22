@@ -1,10 +1,10 @@
-GameForm.js 
+GameForm.js
     -> createGame(game)  (From handle submit)
 
 GameContainer.js
     -> createGame
-        ->GamesService.postGame(newGame) 
-        
+        ->GamesService.postGame(newGame)
+
 GameServices.js
     -> GamesService.postGame (POST method)
         (fetching baseURL = our localhost API address)
@@ -14,13 +14,11 @@ GameServices.js
             ->.then we have our savedGame and setGames([...games, savedGame])
             so we can render the latest game aswell
 
-create_router.js 
-router.post('/') 
+create_router.js
+router.post('/')
     -> newData = our returned JSON (red.body)
-    insert our newData to our collection 
-        -> collection.insertOne(newData) 
+    insert our newData to our collection
+        -> collection.insertOne(newData)
         (//db.collection.insertOne(data))
-        .then we return the we send back
-        the inserted document as a response to
-        client that made the request
-
+        .then we return the inserted document
+        as a response to client that made the request
